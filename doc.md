@@ -3,7 +3,7 @@
 "¡Bienvenido a la documentación de la API Hackathon! Esta API proporciona acceso a diversas funcionalidades para administrar salas y cursos en una plataforma educativa."
 
 
-## Estructura de los archivos que esta devolviendo
+### Estructura de los archivos que esta devolviendo
 
 ```
 {
@@ -14,7 +14,32 @@
 
 ```
 
-## Endpoints Disponibles
+## Endpoints Disponibles Glovales 🌐
+
+Ruta principal
+```http://localhost:3001/api```
+
+Rutas de modulos
+```/chats```
+```/courses```
+```/rooms```
+```/students```
+```/tasks```
+```/teachers```
+
+
+*Metodos de API REST*
+```GET```
+```POST```
+```PUT```
+```DELETE```
+
+*Ejemplo*
+-get(http://localhost:3001/api/<modules>)
+-get(http://localhost:3001/api/<modules>/:id)
+-post(http://localhost:3001/api/<modules>/)           #En el body tienes que enviar los que se agregara {"colum": value, "colum2": value2}  - si id=null => update
+
+
 
 ### GET [/salas](http://localhost:3001/api/rooms/)
 
