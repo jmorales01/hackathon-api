@@ -1,0 +1,53 @@
+version: "3.8"
+services:
+    db:
+        image: mysql:8.0.27
+        container_name: mysqldb
+        env_file:
+            - .env
+        command: --default-authentication-plugin=caching_sha2_password --default-time-zone=-5:00 --sql-mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: utp
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: password
+        ports: 
+            - "3306:3306"
+        volumes:
+            - ./dump:/docker-entrypoint-initdb.d
+            - ./conf:/etc/mysql/conf.d
+            - ./assets/mysql:/var/lib/mysql
+        networks:
+            - default
+    app:
+        build: .
+        container_name: api-hackaton
+        ports: 
+            - "3100:3000"
+        networks:
+            - default
+        env_file:
+            - .env
+        depends_on:
+            - db
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: php-myadmin
+        env_file:
+            - .env
+        ports:
+            - 8000:80
+        environment:
+          PMA_HOST: db
+          PMA_USER: root
+          PMA_PASSWORD: password
+        depends_on:
+            - db
+        networks:
+            - default
+        
+volumes:
+    persistent:
+
+         

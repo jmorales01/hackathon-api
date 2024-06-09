@@ -1,0 +1,13 @@
+
+.vscode/
+assets/*
+src/assets/preferences/*
+src/assets/tmp/*
+src/view/cache
+src/core/slim/vendor
+
+.envs3
+migrations/dist/*
+node_modules
+package-lock.json
+
