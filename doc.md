@@ -2,9 +2,21 @@
 
 "¡Bienvenido a la documentación de la API Hackathon! Esta API proporciona acceso a diversas funcionalidades para administrar salas y cursos en una plataforma educativa."
 
+
+## Estructura de los archivos que esta devolviendo
+
+```
+{
+    "error": false,
+    "status": 200,
+    "body": []
+}
+
+```
+
 ## Endpoints Disponibles
 
-### GET /salas
+### GET [/salas](http://localhost:3001/api/rooms/)
 
 "Este endpoint devuelve todas las salas disponibles en la base de datos."
 
@@ -15,12 +27,14 @@
 #### Respuestas
 
 - 200 OK: "Devuelve un arreglo JSON con todas las salas."
-- 404 Not Found: "Si no se encuentran salas en la base de datos."
-- 500 Internal Server Error: "Si ocurre un error al procesar la solicitud."
 
 #### Ejemplo de Solicitud
 
-```GET /salas```
+```
+http://localhost:3001/api/rooms/
+
+```
+
 
 ### GET /salas/:id
 

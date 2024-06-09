@@ -61,30 +61,23 @@ Siga los siguientes pasos para configurar el proyecto localmente:
    ```bash
    code .
    ```
-5. Instale las dependencias del proyecto:
+5. Ejecute el siguiente comando en la raíz del proyecto para levantar los contenedores:
+   ```bash
+   docker-compose up -d phpmyadmin db
+   ```
+6. Instale las dependencias del proyecto:
    ```bash
    npm install
    ```
-3. Ejecute el proyecto:
+7. Ejecute el proyecto:
    ```bash
    npm start
    ```
+8. Acceda a la api en su navegador en http://localhost:3001/.
+9. Acceda a phpMyAdmin en su navegador en http://localhost:8000.
 
 ¡Ahora deberías tener el proyecto en funcionamiento en tu máquina local! 🚀
 
-
-## Ejecutar el Contenedor Docker 🐳
-
-Para ejecutar este proyecto con Docker, asegúrese de tener Docker y Docker Compose instalados en su máquina. Luego, siga estos pasos:
-
-1. Ejecute el siguiente comando en la raíz del proyecto para levantar los contenedores:
-   ```bash
-   docker-compose up -d
-   ```
-2. Acceda a la api en su navegador en http://localhost:3001/.
-3. Acceda a phpMyAdmin en su navegador en http://localhost:8000.
-
-> **Nota:** Si cambias de dirección de volume elimina el volume anterior antes de ejecuta el contenedor `docker volume rm hackaton-dev-404_persistent`.
 
 ### Posibles Soluciones a Problemas 🔧
 
