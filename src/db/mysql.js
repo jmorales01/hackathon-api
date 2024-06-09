@@ -32,6 +32,9 @@ function connect() {
         }
     });
 }
+function disconnect(connection) {
+    connection.end();
+}
 
 connect();
 
@@ -46,10 +49,9 @@ function all(tabla){
         });
     });
 }
-
 function get(tabla,id){
     return new Promise((resolve, reject) => {
-        connection.query('SELECT * FROM ' + tabla + ' WHERE id = ?', [id], (err, rows) => {
+        connection.query(`SELECT * FROM ${tabla} WHERE id = ${id}`, (err, rows) => {
             if (err) {
                 reject(err);
             } else {   
@@ -58,10 +60,9 @@ function get(tabla,id){
         });
     })
 }
-
 function remove(tabla,id){
     return new Promise((resolve, reject) => {
-        connection.query('DELETE FROM ' + tabla + ' WHERE id = ?', [id], (err, rows) => {
+        connection.query(`DELETE FROM ${tabla} WHERE id = ?`, [id], (err, rows) => {
             if (err) {
                 reject(err);
             } else {   
@@ -70,14 +71,40 @@ function remove(tabla,id){
         });
     })
 }
-
-function disconnect(connection) {
-    connection.end();
+function update(tabla, data) {
+    return new Promise((resolve, reject) => {
+        connection.query(`UPDATE ${tabla} SET ? WHERE id = ?`, [data, data.id], (err, rows) => {
+            if (err) {
+                reject(err);
+            } else {   
+                resolve(rows);  
+            }
+        });
+    });
+}
+function insert(tabla, data) {
+    return new Promise((resolve, reject) => {
+        connection.query('INSERT INTO ' + tabla + ' SET ?', [data], (err, rows) => {
+            if (err) {
+                reject(err);
+            } else {   
+                resolve(rows);  
+            }
+        });
+    });
 }
 
-function query(sql) {
+function create(tabla, data) {
+    if(data.id){
+        return update(tabla, data);
+    }else{
+        return insert(tabla, data);
+    }
+}
+
+function query(sql, params) {
     return new Promise((resolve, reject) => {
-        connection.query(sql, (err, rows) => {
+        connection.query(sql, params, (err, rows) => {
             if (err) {
                 reject(err);
             } else {   
@@ -92,5 +119,8 @@ module.exports = {
     get,
     remove,
     disconnect,
-    query
+    query,
+    create,
+    insert,
+    update
 }

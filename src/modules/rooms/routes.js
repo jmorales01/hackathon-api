@@ -3,17 +3,60 @@ const response = require('../../network/result');
 const controller = require('./controller');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+// Routes
+router.get('/', all);
+
+
+function all (req, res) {
     controller.getAll()
     .then((items) => {
         response.success(req, res, items, 200);
     });
-});
-router.get('/get_salas_by_teacher/:teacher_id', (req, res) => {
-    const teacher_id = req.params.teacher_id
-    controller.get_salas_by_teacher(teacher_id)
+};
+router.get('/:id', (req, res) => {
+    controller.getId(req.params.id)
     .then((items) => {
         response.success(req, res, items, 200);
+    });
+});
+router.put('/', (req, res) => {
+    controller.remove(req.body)
+    .then((result) => {
+        response.success(req, res, result, 200);
+    });
+});
+
+router.post('/', (req, res) => {
+    controller.create(req.body)
+    .then((result) => {
+        response.success(req, res, result, 201);
+    });
+});
+
+router.post('/crear_salas', (req, res) => {
+    const { curso_id, cantidad_salas, cantidad_alumnos_por_sala } = req.body;
+    controller.crearSalas(curso_id, cantidad_salas, cantidad_alumnos_por_sala)
+    .then((result) => {
+        response.success(req, res, result, 201);
+    })
+    .catch((error) => {
+        response.error(req, res, 'Error creando salas', 500, error);
+    });
+});
+
+router.get('/get_salas_by_teacher/:teacher_id', (req, res) => {
+    const teacher_id = req.params.teacher_id;
+    controller.getSalas(teacher_id)
+    .then((result) => {
+        response.success(req, res, result, 200);
+    });
+});
+
+router.get('/asignar_sala_aleatorio/:id_curso', (req, res) => {
+    const id_curso = req.params.id_curso;
+    controller.asignarSalaAleatorio(id_curso)
+    .then((result) => {
+        response.success(req, res, result, 200);
     });
 });
 

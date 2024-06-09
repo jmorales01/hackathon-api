@@ -11,7 +11,7 @@ const app = express();
 
 // Middlewares
 app.set('port', config.app.port);
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('dev'));
 
