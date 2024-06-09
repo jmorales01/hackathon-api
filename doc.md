@@ -35,9 +35,9 @@ Rutas de modulos
 ```DELETE```
 
 *Ejemplo*
-- get(http://localhost:3001/api/<modules>)
-- get(http://localhost:3001/api/<modules>/:id)
-- post(http://localhost:3001/api/<modules>/)           #En el body tienes que enviar los que se agregara {"colum": value, "colum2": value2}  - si id=null => update
+- get(http://localhost:3001/api/module)
+- get(http://localhost:3001/api/module/:id)
+- post(http://localhost:3001/api/module/)       #En el body tienes que enviar los que se agregara {"colum": value, "colum2": value2}  - si id=null => update
 
 
 
