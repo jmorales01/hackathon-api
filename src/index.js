@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     const mensajeBienvenida = '<div align="center"><h1>¡Bienvenido a mi aplicación!</h1></div>';
     const enlaceDocumentacion = `
     <div align="center">
-        <button align="center"><a href="https://github.com/jmorales01/hackathon-api/blob/master/readme.md">Ir a la documentación</a></button>
+        <button align="center"><a href="https://github.com/jmorales01/hackathon-api/blob/master/doc.md">Ir a la documentación</a></button>
     </div>
     `;
     const contenidoHTML = `${iconoSaludo}${mensajeBienvenida}${enlaceDocumentacion}`;
