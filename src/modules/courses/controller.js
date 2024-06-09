@@ -21,7 +21,7 @@ function getCoursesByTeacher(id) {
             c.id AS id_curso, 
             c.nombre AS nombre_curso, 
             c.descripcion, 
-            c.imagen, 
+            c.img, 
             c.id_profesor, 
             p.nombre AS nombre_profesor, 
             p.email AS email_profesor
