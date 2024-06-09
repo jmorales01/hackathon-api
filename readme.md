@@ -15,22 +15,22 @@
 ## Estructura del Proyecto 🗂️
 
 📁 Proyecto
-|
 ├── 📁 src
-|   ├── 📄 server.js
-|   ├── 📁 routes
-|   |   ├── 📄 index.js
-|   |   └── 📄 otherRoute.js
-|   ├── 📁 controllers
-|   |   ├── 📄 mainController.js
-|   |   └── 📄 otherController.js
-|   └── 📁 models
-|       ├── 📄 userModel.js
-|       └── 📄 otherModel.js
+│   ├── 📄 server.js
+│   ├── 📁 routes
+│   │   ├── 📄 index.js
+│   │   └── 📄 otherRoute.js
+│   ├── 📁 controllers
+│   │   ├── 📄 mainController.js
+│   │   └── 📄 otherController.js
+│   └── 📁 models
+│       ├── 📄 userModel.js
+│       └── 📄 otherModel.js
 └── 📁 assets
     ├── 🖼️ image1.jpg
     ├── 🖼️ image2.png
     └── 📄 styles.css
+
 
 
 ## Tecnologías Utilizadas 💻
