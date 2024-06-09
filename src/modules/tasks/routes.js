@@ -33,14 +33,14 @@ router.post('/', (req, res) => {
     });
 });
 
-router.post('/crear_salas', (req, res) => {
-    const { curso_id, cantidad_salas, cantidad_alumnos_por_sala } = req.body;
-    controller.crearSalas(curso_id, cantidad_salas, cantidad_alumnos_por_sala)
+router.post('/crear_tarea', (req, res) => {
+    const { id_sala, nombre, descripcion, asignado_a, estado } = req.body;
+    controller.crearTarea(id_sala, nombre, descripcion, asignado_a, estado)
     .then((result) => {
         response.success(req, res, result, 201);
     })
     .catch((error) => {
-        response.error(req, res, 'Error creando salas', 500, error);
+        response.error(req, res, 'Error creando tarea', 500, error);
     });
 });
 
@@ -60,13 +60,4 @@ router.get('/asignar_sala_aleatorio/:id_curso', (req, res) => {
     });
 });
 
-router.post('/unir_sala', (req, res) => {
-    const { id_estudiante, id_curso, id_sala } = req.body;
-    controller.unirSala(id_estudiante, id_curso, id_sala)
-    .then((result) => {
-        response.success(req, res, result, 200);
-    }); 
-});
-
 module.exports = router;
-

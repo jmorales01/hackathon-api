@@ -1,6 +1,6 @@
 const db = require('../../db/mysql');
 
-const TABLA = 'salas';
+const TABLA = 'tareas';
 function getAll() {
     return db.all(TABLA);
 }
@@ -14,9 +14,9 @@ function remove(body) {
 function create(body) {
     return db.create(TABLA, body);
 }
-function crearSalas(curso_id, cantidad_salas, cantidad_alumnos_por_sala) {
-    const query = `CALL crear_salas(?, ?, ?)`;
-    return db.query(query, [curso_id, cantidad_salas, cantidad_alumnos_por_sala]);
+function crearTarea(id_sala, nombre, descripcion, asignado_a, estado) {
+    const query = `CALL crear_tarea(?, ?, ?, ?, ?)`;
+    return db.query(query, [id_sala, nombre, descripcion, asignado_a, estado]);
 }
 
 function getSalas(id) {
@@ -38,18 +38,12 @@ function asignarSalaAleatorio(id_curso) {
     return db.query(query, [id_curso]);
 }
 
-function unirSala(id_estudiante, id_curso, id_sala) {
-    const query = `CALL unirse_a_sala(?,?,?)`;
-    return db.query(query, [id_estudiante, id_curso, id_sala]);
-}
-
 module.exports = {
     getAll,
     getId,
     remove,
     create,
-    crearSalas,
+    crearTarea,
     getSalas,
-    asignarSalaAleatorio,
-    unirSala
+    asignarSalaAleatorio
 }
