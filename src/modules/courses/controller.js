@@ -15,11 +15,28 @@ function remove(body) {
 function create(body) {
     return db.create(TABLA, body);
 }
+function getCoursesByTeacher(id) {
+    var query = `
+        SELECT 
+            c.id AS id_curso, 
+            c.nombre AS nombre_curso, 
+            c.descripcion, 
+            c.imagen, 
+            c.id_profesor, 
+            p.nombre AS nombre_profesor, 
+            p.email AS email_profesor
+        FROM cursos as c
+        JOIN profesores as p ON c.id_profesor = p.id
+        WHERE p.id = ?;
+        `;
+    return db.query(query, [id]);
+}
 
 
 module.exports = {
     getAll,
     getId,
     remove,
-    create
+    create,
+    getCoursesByTeacher
 }

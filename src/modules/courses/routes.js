@@ -32,5 +32,12 @@ router.post('/', (req, res) => {
         response.success(req, res, result, 201);
     });
 });
+router.get('/get_courses_by_teacher/:id', (req, res) => {
+    const id = req.params.id
+    controller.getCoursesByTeacher(id)
+    .then((result) => {
+        response.success(req, res, result, 200);
+    });
+});
 
 module.exports = router;

@@ -12,13 +12,15 @@ GROUP BY s.id, s.nombre, s.max_participantes;
 
 
 -- Procedimiento para traer todos los datos de los cursos que le pertenecen a un profesor.
+
 SELECT 
-    c.id, 
-    c.nombre AS curso, 
+    c.id AS id_curso, 
+    c.nombre AS nombre_curso, 
+    c.descripcion, 
+    c.imagen, 
     c.id_profesor, 
-    p.nombre AS profesor, 
+    p.nombre AS nombre_profesor, 
     p.email AS email_profesor
 FROM cursos as c
 JOIN profesores as p ON c.id_profesor = p.id
 WHERE p.id = 1;
-
