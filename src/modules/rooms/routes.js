@@ -44,9 +44,9 @@ router.post('/crear_salas', (req, res) => {
     });
 });
 
-router.get('/get_salas_by_teacher/:teacher_id', (req, res) => {
-    const teacher_id = req.params.teacher_id;
-    controller.getSalas(teacher_id)
+router.get('/get_salas_by_courses/:course_id', (req, res) => {
+    const course_id = req.params.course_id;
+    controller.getSalasByCourses(course_id)
     .then((result) => {
         response.success(req, res, result, 200);
     });

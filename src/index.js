@@ -1,6 +1,10 @@
 const app = require('./app');
+const express = require('express');
+const server = express();
 
-app.get('/', (req, res) => {
+server.use(app);
+
+server.get('/', (req, res) => {
     const iconoSaludo = `
     <div align="center">
         <div class="tenor-gif-embed" data-postid="282704938762721238" data-share-method="host"
@@ -20,9 +24,9 @@ app.get('/', (req, res) => {
     const contenidoHTML = `${iconoSaludo}${mensajeBienvenida}${enlaceDocumentacion}`;
     
     res.send(contenidoHTML);
-  });
+});
 
-
-app.listen(app.get('port'), () => {
-    console.log('Executing on port ' + app.get('port'));
-})
+const port = app.get('port');
+server.listen(port, () => {
+    console.log('Executing on port ' + port);
+});

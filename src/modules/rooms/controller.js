@@ -19,7 +19,7 @@ function crearSalas(curso_id, cantidad_salas, cantidad_alumnos_por_sala) {
     return db.query(query, [curso_id, cantidad_salas, cantidad_alumnos_por_sala]);
 }
 
-function getSalas(id) {
+function getSalasByCourses(id) {
     var query = `SELECT 
             s.id AS sala_id,
             s.nombre AS sala_nombre,
@@ -49,7 +49,7 @@ module.exports = {
     remove,
     create,
     crearSalas,
-    getSalas,
+    getSalasByCourses,
     asignarSalaAleatorio,
     unirSala
 }
