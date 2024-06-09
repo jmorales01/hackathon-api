@@ -94,6 +94,11 @@ Siga los siguientes pasos para configurar el proyecto localmente:
   - Asegúrese de que no hay conflictos de puertos con otros servicios en su máquina.
 
 
+## Documentación 📝
+
+1. Ir a la documentación de la API [DOC](https://github.com/jmorales01/hackathon-api/blob/master/doc.md).
+
+
 ## Contribución 🤝
 
 ¡Las contribuciones son bienvenidas! Por favor, siga estos pasos para contribuir al proyecto:
